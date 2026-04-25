@@ -102,7 +102,7 @@ export class NexHealthClient {
   }
 
   // --- Institutions ---
-  async getInstitutions(): Promise<NexHealthResponse<{ institutions: NexHealthInstitution[] }>> {
+  async getInstitutions(): Promise<NexHealthResponse<NexHealthInstitution[]>> {
     return this.request("GET", "/institutions");
   }
 
