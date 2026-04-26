@@ -11,6 +11,7 @@ import type {
   NexHealthSlotGroup,
   NexHealthAppointment,
 } from "./types.js";
+import { MockNexHealthClient } from "./mock-client.js";
 
 export class NexHealthClient {
   private config: NexHealthClientConfig;
@@ -219,7 +220,12 @@ export class NexHealthClient {
   }
 }
 
-export function createNexHealthClient(): NexHealthClient | null {
+export function createNexHealthClient(): NexHealthClient | MockNexHealthClient | null {
+  if (process.env.USE_MOCK_DATA === "true") {
+    console.info("USE_MOCK_DATA=true — using local seed data instead of NexHealth API");
+    return new MockNexHealthClient();
+  }
+
   const apiKey = process.env.NEXHEALTH_API_KEY;
 
   if (!apiKey) {

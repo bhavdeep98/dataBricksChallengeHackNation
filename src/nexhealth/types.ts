@@ -45,6 +45,20 @@ export interface NexHealthProvider {
   inactive?: boolean;
   foreign_id?: string;
   profile_url?: string;
+  /** Provider rating (1–5 scale) */
+  rating?: number;
+  /** Number of reviews */
+  reviews_count?: number;
+  /** Phone number for the provider's office */
+  phone_number?: string;
+  /** List of accepted insurance providers */
+  insurance_accepted?: string[];
+  /** Distance from patient in miles */
+  distance_mi?: number;
+  /** Summary of review highlights and concerns */
+  review_summary?: string;
+  /** Known facility limitations from reviews (e.g. "no x-ray machine") */
+  known_limitations?: string[];
 }
 
 // --- Patient ---
