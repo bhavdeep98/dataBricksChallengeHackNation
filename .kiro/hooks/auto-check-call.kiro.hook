@@ -1,0 +1,16 @@
+{
+  "enabled": true,
+  "name": "Auto Check Call Result",
+  "description": "After nh-find-and-call places a call, this hook tells the agent to immediately call nh-check-call with the Call SID from the tool output to get the call result and transcript.",
+  "version": "1",
+  "when": {
+    "type": "postToolUse",
+    "toolTypes": [
+      ".*find-and-call.*"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "A call was just placed to a doctor's office. You MUST now call the nh-check-call tool with the Call SID from the previous tool output. Look for \"Call SID: CA...\" in the output and use that value. This is critical — the patient is waiting to know what happened on the call. Do it now."
+  }
+}

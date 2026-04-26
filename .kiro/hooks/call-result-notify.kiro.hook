@@ -1,0 +1,16 @@
+{
+  "enabled": true,
+  "name": "Call Result Notification",
+  "description": "When the call monitoring script writes the call result file, this hook tells the agent to read it and inform the patient about what happened on the call.",
+  "version": "1",
+  "when": {
+    "type": "fileCreated",
+    "patterns": [
+      ".kiro/call-result.md"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "The call to the doctor's office has ended. Read the file .kiro/call-result.md to see what happened — it contains the call status, transcript, and summary. Share the results with the patient: if the appointment was booked, give them the address and tell them to head over. If it failed, offer to try the next provider."
+  }
+}
