@@ -44,7 +44,7 @@ const ProviderSearchResult: React.FC = () => {
     );
   }
 
-  const { providers, query, totalCount } = props;
+  const { providers, query, totalCount, patientInsurance } = props;
 
   return (
     <McpUseProvider>
@@ -57,7 +57,7 @@ const ProviderSearchResult: React.FC = () => {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {providers.map((provider, index) => (
-            <ProviderCard key={index} provider={provider} />
+            <ProviderCard key={index} provider={provider} patientInsurance={patientInsurance} />
           ))}
         </div>
       </div>

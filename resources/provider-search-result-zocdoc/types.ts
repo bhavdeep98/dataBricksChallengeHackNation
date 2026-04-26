@@ -44,12 +44,21 @@ const providerItemSchema = z.object({
   distance_mi: z.number().optional(),
   next_available_date: z.string().optional(),
   accepts_insurance: z.boolean().optional(),
+
+  // Enhanced fields for auto-booking flow
+  rating: z.number().optional(),
+  reviews_count: z.number().optional(),
+  phone_number: z.string().optional(),
+  insurance_accepted: z.array(z.string()).optional(),
+  call_status: z.enum(["pending", "calling", "confirmed", "failed", "skipped"]).optional(),
+  location_name: z.string().optional(),
 });
 
 export const propSchema = z.object({
   providers: z.array(providerItemSchema),
   query: z.string().describe("Search context description"),
   totalCount: z.number().describe("Total number of results"),
+  patientInsurance: z.string().optional().describe("Patient's insurance provider for matching"),
 });
 
 export type ProviderItem = z.infer<typeof providerItemSchema>;
